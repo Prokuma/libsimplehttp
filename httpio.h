@@ -1,3 +1,8 @@
+/*
+ * 실질적인 기능을 구현하는 소켓부분
+ * Client용과 Server용 함수가 존재한다
+ */
+
 #ifndef HTTPIO_H_
 #define HTTPIO_H_
 
@@ -25,7 +30,7 @@ void DieWithError(char *errorMessage);
 
 int client_process_http(int sockfd, char* host, char* page, char* params, char* type, char* response);
 
-void client_send(char* type,char* address,char* params, char* response, char* page);
+void client_send(char* type,char* address,char* params, char* response, char* page, int port);
 
 int server_bind(char* address,int port,char* response,int response_size);
 
