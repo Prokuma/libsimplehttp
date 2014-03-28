@@ -1,8 +1,3 @@
-/*
- * 실질적인 기능을 구현하는 소켓부분
- * Client용과 Server용 함수가 존재한다
- */
-
 #ifndef HTTPIO_H_
 #define HTTPIO_H_
 

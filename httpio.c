@@ -41,14 +41,12 @@ void client_send(char* type,char* address,char* params, char* response, char* pa
 int server_bind(char* address,int port,char* response,int response_size){
     int sockfd,x,xx,sockfd2;
     struct sockaddr_in servaddr,cliaddr;
-    //char str[1000];
 
     sockfd = socket(AF_INET, SOCK_STREAM,0);
     bzero(&servaddr, sizeof(servaddr));
     servaddr.sin_family = AF_INET;
     servaddr.sin_port = htons(port);
     servaddr.sin_addr.s_addr = inet_addr(address);
-    //inet_pton(AF_INET, str, &servaddr.sin_addr);
     x = bind(sockfd, (SA *)&servaddr, sizeof(servaddr));
     if(x < 0){
         puts("Bind Error!");
