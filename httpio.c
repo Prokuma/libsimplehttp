@@ -1,4 +1,5 @@
 #include "httpio.h"
+#include "httputil.h"
 
 int client_process_http(int sockfd, char* host, char* page, char* params, char* type, char* response){
     char sendline[MAXLINE + 1], recvline[MAXLINE + 1];
@@ -8,7 +9,7 @@ int client_process_http(int sockfd, char* host, char* page, char* params, char* 
             "Host: %s\r\n"
             "Content-type: application/x-www-form-urlencoded\r\n"
             "Content-length: %d\r\n"
-            "User-Agent: libhttp/0.1"
+            "User-Agent: libsimplehttp/1.0\r\n\r\n"
             "%s", type ,page, host, (int)strlen(params), params);
     write(sockfd, sendline, strlen(sendline));
 
@@ -21,10 +22,11 @@ int client_process_http(int sockfd, char* host, char* page, char* params, char* 
     return offset;
 }
 
-void client_send(char* type,char* address,char* params, char* response, char* page, int port){
+void client_send(char* type,char* address,char* params, char* response, char* page, int port,int iscutheader){
     int sockfd;
     struct sockaddr_in servaddr;
     char str[50];
+    char** split;
 
     sockfd = socket(AF_INET,SOCK_STREAM,0);
     bzero(&servaddr, sizeof(servaddr));
@@ -35,6 +37,13 @@ void client_send(char* type,char* address,char* params, char* response, char* pa
 
     connect(sockfd,(SA *)&servaddr, sizeof(servaddr));
     client_process_http(sockfd, address, page, params, type, response);
+    if(iscutheader == 1){
+	split = HTTPHeaderCut(response);
+	response = split[1];
+    }else if(iscutheader == 2){
+	split = HTTPHeaderCut(response);
+	response = split[0];
+    }
     close(sockfd);
 }
 

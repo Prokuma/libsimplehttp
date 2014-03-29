@@ -10,8 +10,9 @@
 #include <netdb.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 char* IpToDomain(char* domain);
-
+char** HTTPHeaderCut(char* response);
 
 #endif
