@@ -30,11 +30,11 @@ void DieWithError(char *errorMessage);
 
 int client_process_http(int sockfd, char* host, char* page, char* params, char* type, char* response);
 
-void client_send(char* type,char* address,char* params, char* response, char* page, int port, int iscutheader);
+void client_send(char* type,char* address,char* params, char* response, char* page, int port);
 
 int server_bind(char* address,int port,char* response,int response_size);
 
-void server_send(char* content, int sockfd);
+void server_send(int code, char* charcode, char* content, int sockfd, int length);
 
 
 #endif /* HTTPIO_H_ */

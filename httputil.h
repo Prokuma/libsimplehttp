@@ -11,8 +11,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#define MAX_CHAR 400
+#define MAX_LINE 1000
 
 char* IpToDomain(char* domain);
-char** HTTPHeaderCut(char* response);
+char* getHTTPContent(char* response);
+char* getHTTPHeader(char* response);
+char* getClientHeaderInfo(int InfoType, char* InfoTitle, char* header, int InfoNum);
 
 #endif
