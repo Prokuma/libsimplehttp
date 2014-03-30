@@ -29,4 +29,24 @@ printf("%s\n", resposne);
 
 httputil.h는 http분석 관련한 함수들을 내장 하고 있습니다.
 
-아직 완성되지 않았으므로 나중에 설명을 적겟습니다
+IpToDomain(char* domain); - 도메인을 받아서 IP를 char*로 반환
+```C
+char* ip = IpToDomain("google.com");
+```
+
+getHTTPContent(char* response); - 받은 값을 받아서 헤더를 자름
+```C
+//response는 char*로 가장합니다
+char* content = getHTTPContent(response);
+```
+
+getHTTPHeader(char* resposne) - 받은 값을 받아서 내용을 자름
+```C
+//이하동문
+char* header = getHTTPHeader(response);
+```
+
+getClientHeaderInfo(int InfoType, char* InfoTitle, char* header, char* header, int InfoNum) - 헤더정보를 분석
+완성되지 않았으므로 나중에 설명을 추가하겟습니다.
+
+```
