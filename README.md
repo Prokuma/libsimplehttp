@@ -48,5 +48,3 @@ char* header = getHTTPHeader(response);
 
 getClientHeaderInfo(int InfoType, char* InfoTitle, char* header, char* header, int InfoNum) - 헤더정보를 분석
 완성되지 않았으므로 나중에 설명을 추가하겟습니다.
-
-```
